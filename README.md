@@ -1,4 +1,4 @@
-# Designing for Serendipity
+# Designing Agents for Serendipity
 
 A cinematic, scroll-driven framework piece built with Next.js 16 (App Router), Tailwind CSS v4, Framer Motion, and Lenis smooth scrolling. Presents the 3T Framework for agentic design in a dark, presentation-style format.
 

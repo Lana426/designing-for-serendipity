@@ -317,7 +317,7 @@ export const scenes: SceneData[] = [
     id: 'hero',
     type: 'hero',
     eyebrow: 'A FRAMEWORK FOR AGENTIC DESIGN',
-    heading: 'Designing for Serendipity',
+    heading: 'Designing Agents for Serendipity',
     subheading:
       'How to decide what to automate — and what to leave alone — so humans can do the work only humans can do.',
   },
