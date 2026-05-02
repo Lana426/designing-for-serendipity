@@ -521,11 +521,33 @@ export default function Scene({ scene }: SceneProps) {
                   {card.title}
                 </p>
                 <p
-                  className="text-sm md:text-base leading-relaxed"
+                  className="text-sm md:text-base leading-relaxed mb-4"
                   style={{ color: 'var(--text-secondary)' }}
                 >
                   {card.body}
                 </p>
+                {card.questions && card.questions.length > 0 && (
+                  <div>
+                    <p
+                      className="text-xs uppercase tracking-widest font-semibold mb-2"
+                      style={{ color: 'var(--bcg-green)' }}
+                    >
+                      Ask:
+                    </p>
+                    <ul className="space-y-2 pl-1">
+                      {card.questions.map((q, qi) => (
+                        <li
+                          key={qi}
+                          className="text-xs leading-relaxed flex gap-2"
+                          style={{ color: 'var(--text-muted)' }}
+                        >
+                          <span className="flex-shrink-0" style={{ color: 'var(--bcg-green)' }}>—</span>
+                          <span>{q}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>

@@ -43,6 +43,7 @@ export interface IndustryData {
 export interface PracticeCardData {
   title: string
   body: string
+  questions?: string[]
 }
 
 export interface SceneFootnote {
@@ -326,8 +327,8 @@ export const scenes: SceneData[] = [
     type: 'body',
     heading: 'The old growth equation is breaking.',
     body: [
-      'For decades, growth followed one equation: more inputs, exponential outputs. Specialization was the engine. Coordination tools scaled it. Organizations got very good at producing more of the same thing, faster.',
-      "But inputs are collapsing in cost. Code that took a quarter takes an afternoon. A deck that took a week takes an hour. Output is exploding — and most of it looks the same as everyone else's. The old equation still runs. It just doesn't differentiate anymore.",
+      'For decades, growth ran on a familiar equation: more inputs, exponential outputs. Specialization was the engine, economies of scale rewarded it, and organizations were built around the logic — functional silos, deep expertise, repeatable processes producing more of the same thing, faster. To be world-class at marketing, you became a marketer. To scale engineering, you built engineering orgs. The result was organizations full of deeply knowledgeable people optimizing within their lanes — and for a long time, that was enough.',
+      "But inputs are collapsing in cost. Code that took a quarter takes an afternoon. A deck that took a week takes an hour. Content, analysis, first drafts, prototypes — the cost of producing them is trending toward zero. Output is multiplying, ROI is harder to track, and most of what's being produced is starting to look indistinguishable from everyone else's. The old equation still runs. It just no longer differentiates.",
     ],
   },
   {
@@ -350,20 +351,20 @@ export const scenes: SceneData[] = [
       {
         number: '01',
         title: 'Safety',
-        subtitle: 'Believing the other person is actually with you.',
-        body: 'The freedom to say the half-formed thing without self-censoring.',
+        subtitle: 'Trusting what — and who — you\'re working with.',
+        body: 'Creative work moves at the speed of trust. When people doubt the inputs, the systems, or the people around them, energy quietly shifts from creating to checking.',
       },
       {
         number: '02',
         title: 'Autonomy',
-        subtitle: 'A real problem with freedom in how to solve it.',
-        body: 'Expert judgment unblocked from process labor.',
+        subtitle: 'Time to solve the problems you\'ve built a career to solve.',
+        body: 'Expertise compounds when the people who hold it get to actually use it. The constraint that fuels creativity is the problem itself — but most experts never reach it, buried under the procedural work that fills the day before the thinking can begin.',
       },
       {
         number: '03',
         title: 'Collision',
-        subtitle: 'Different minds, in the same room, thinking together.',
-        body: 'Cognitive diversity with enough trust to think badly out loud.',
+        subtitle: 'Different minds, encountering the same problem, thinking together.',
+        body: 'Breakthroughs come from the friction between disciplines and perspectives. Access through screens isn\'t enough — it takes shared context and the trust to think badly out loud.',
       },
     ],
     closingLine:
@@ -390,8 +391,8 @@ export const scenes: SceneData[] = [
       {
         letter: 'Truth',
         title: 'Output',
-        question: 'Can the result be trusted on its own?',
-        body: "This is where most of the industry's energy goes today — reliability, accuracy, governance, oversight. It's the prerequisite, not the destination. Ask: is the output safe to act on without human judgment in the loop?",
+        question: "Can the agent's work be trusted without your eyes on it?",
+        body: "This is the prerequisite for everything else. Reclaimed time is only real if you can act on the output without re-doing it in your head. Reliability, accuracy, and governance are what determine whether automation returns capacity or quietly consumes it.",
       },
       {
         letter: 'Ties',
@@ -412,9 +413,10 @@ export const scenes: SceneData[] = [
   {
     id: 'the-trap',
     type: 'body',
-    heading: 'The trap: automating the work without redesigning where it happens.',
+    heading: 'A note on where the work happens.',
     body: [
-      'Running tasks through the 3T Framework returns time and attention to humans. But that only matters if humans then have somewhere worth putting that attention. If we automate the manual labor and leave people to "collaborate" through the same screens we always have — pings, status updates, async threads, back-to-back Zooms — we\'ve freed up time without freeing up anything else. You can\'t have a creative collision over Slack. You can\'t build the kind of trust that produces genuine innovation in a 45-minute recurring. The framework is the start, not the finish. The work that follows is rebuilding the environments where human creativity can actually surface.',
+      'Returning time to people only matters if there\'s somewhere meaningful for that time to land. Most knowledge work has gone hybrid, and most hybrid setups have quietly lost what the office was actually for. Productivity transferred to remote just fine. Collision didn\'t — the unplanned conversation, the cross-functional friction, the trust that builds when people share space without an agenda.',
+      "The opportunity isn't to mandate days back in the office. It's to design the moments that benefit most from being together, and let agents handle the coordination overhead that currently fills them. The Pixar atrium worked because it was deliberate architecture for accidental collision. The modern version isn't a building — it's a small set of intentional moments where the right minds meet with the context to actually think together.",
     ],
   },
   {
@@ -435,23 +437,47 @@ export const scenes: SceneData[] = [
     type: 'practice-cards',
     heading: 'What this means in practice.',
     subheading:
-      'A starting point for clients designing for human creativity in an agentic world.',
+      'A diagnostic for leaders deciding which work to automate, which to protect, and where to design for connection.',
     practiceCards: [
       {
         title: 'AUDIT THE WORK',
-        body: "Run every recurring task through the 3T Framework. Most knowledge organizations have never explicitly asked which work compounds human relationships and which is just process labor. The audit itself surfaces what's been hidden in plain sight.",
+        body: "Most knowledge organizations have never explicitly mapped which work compounds human relationships and which is pure process labor. The audit itself surfaces what's hiding in plain sight.",
+        questions: [
+          "For each senior role, what percentage of weekly hours actually requires that role's judgment versus what could be handled below it — or by an agent?",
+          "Which roles have we hired for senior expertise but staffed with junior tasks?",
+          "Where in the workflow does an expert's time create real differentiation, and where is it indistinguishable from anyone else's?",
+          "If we redesigned a given role from scratch today, what would we cut, automate, or elevate?",
+        ],
       },
       {
         title: 'AUTOMATE THE MAINTENANCE',
-        body: 'Hand the Truth-only work to agents — the bounded, governable, judgment-free tasks that consume expert attention without building anything. This is where the time and creative capacity come from.',
+        body: "The clearest near-term opportunity is the Truth-only layer — bounded, governable, judgment-free tasks that consume expert attention without producing differentiation. This is where reclaimed capacity comes from.",
+        questions: [
+          "Which tasks in this role pass the Truth test today, and which need governance investment to get there?",
+          "What is the cost — in senior hours, decision latency, opportunity foregone — of not automating these?",
+          "If automation reclaimed 20% of this role's week, what higher-leverage work would fill it?",
+          "Where are we currently using review loops as a substitute for trust in the underlying output?",
+        ],
       },
       {
         title: 'PROTECT THE TIES',
-        body: 'Identify the interactions that compound trust between people over time and explicitly designate them as human. Make this a stated principle, not an accident. The work that builds relationships should never quietly drift toward automation just because it\'s possible.',
+        body: "Some interactions compound trust between people over time. They look like maintenance but they're the actual asset. Automating them quietly erodes the foundation the rest of the work runs on.",
+        questions: [
+          "For each client-facing or stakeholder-facing role, which interactions build relational capital that compounds over years?",
+          "Where would automating save measurable time this quarter but cost unmeasurable trust over multiple cycles?",
+          "Which moments in this role are explicitly for the relationship, not the deliverable — and is that distinction protected in policy?",
+          "What signal would tell us the relationship is eroding before the revenue does?",
+        ],
       },
       {
-        title: 'REDESIGN WHERE WORK HAPPENS',
-        body: 'Returned attention is wasted if it lands back in Slack and Zoom. Build the rooms — physical, recurring, cross-functional — where creative collision can actually happen. The framework returns the time. Leadership has to decide what to do with it.',
+        title: 'DESIGN FOR SERENDIPITY',
+        body: "Reclaimed time only creates leverage if it lands somewhere generative. The opportunity is to engineer the conditions for unexpected collision — giving experts the space, the trust in their inputs, and the cross-pollination that lets them see familiar problems through new lenses. Sometimes that's an in-person convergence. Sometimes it's an agent-curated introduction. The form varies; the intent is deliberate.",
+        questions: [
+          "When did our most senior experts last engage with a perspective outside their domain on a problem that mattered?",
+          "What would it take for an SME to trust that the work running in the background — the analysis, the drafting, the synthesis — is credible enough to step away from?",
+          "Where in our organization is cross-functional contact accidental, and where could we make it intentional?",
+          "If we redesigned how a senior expert spent a typical month, how much of it would be spent on novel problems versus familiar ones?",
+        ],
       },
     ],
   },
@@ -462,9 +488,9 @@ export const scenes: SceneData[] = [
     heading:
       'Transparent enough to preserve trust.\nTargeted enough to return attention to what matters.\nRestrained enough to leave the authentically human work alone.',
     body: [
-      "The 3T Framework isn't a tool for doing less. It's a tool for being deliberate. About which work we hand to agents. About which work we protect because it's how trust is built, how creativity surfaces, how people stay people in the work. The decisions are still ours to make. The framework just makes the questions impossible to ignore.",
-      "So the question for every leader, every team, every organization is the same: which of your work is genuinely human, and what are you doing to protect it?",
+      "The 3T Framework isn't about doing less. It's about being deliberate — separating the work that should be handed to agents from the work that compounds value precisely because it's human. The judgment is still yours. The framework's role is to make the trade-offs explicit, so they get made on purpose, not by default.",
+      "The question for every leader is the same: which of your organization's work is genuinely human — and what are you doing to protect it?",
     ],
-    finalLine: "That's not a math problem. That's closer to art.",
+    finalLine: "The next era of competitive advantage won't be engineered. It will be designed.",
   },
 ]
