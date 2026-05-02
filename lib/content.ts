@@ -352,19 +352,19 @@ export const scenes: SceneData[] = [
         number: '01',
         title: 'Safety',
         subtitle: 'Trusting what — and who — you\'re working with.',
-        body: 'Creative work moves at the speed of trust. When people doubt the inputs, the systems, or the people around them, energy quietly shifts from creating to checking.',
+        body: 'When people doubt the inputs, the systems, or the people around them, energy shifts from creating to checking.',
       },
       {
         number: '02',
         title: 'Autonomy',
         subtitle: 'Time to solve the problems you\'ve built a career to solve.',
-        body: 'Expertise compounds when the people who hold it get to actually use it. The constraint that fuels creativity is the problem itself — but most experts never reach it, buried under the procedural work that fills the day before the thinking can begin.',
+        body: 'Expertise compounds when the people who hold it actually get to use it — most experts are buried in process before the thinking can begin.',
       },
       {
         number: '03',
         title: 'Collision',
         subtitle: 'Different minds, encountering the same problem, thinking together.',
-        body: 'Breakthroughs come from the friction between disciplines and perspectives. Access through screens isn\'t enough — it takes shared context and the trust to think badly out loud.',
+        body: 'Breakthroughs come from friction across disciplines — and that takes shared context, not just shared screens.',
       },
     ],
     closingLine:
@@ -416,7 +416,7 @@ export const scenes: SceneData[] = [
     heading: 'A note on where the work happens.',
     body: [
       'Returning time to people only matters if there\'s somewhere meaningful for that time to land. Most knowledge work has gone hybrid, and most hybrid setups have quietly lost what the office was actually for. Productivity transferred to remote just fine. Collision didn\'t — the unplanned conversation, the cross-functional friction, the trust that builds when people share space without an agenda.',
-      "The opportunity isn't to mandate days back in the office. It's to design the moments that benefit most from being together, and let agents handle the coordination overhead that currently fills them. The Pixar atrium worked because it was deliberate architecture for accidental collision. The modern version isn't a building — it's a small set of intentional moments where the right minds meet with the context to actually think together.",
+      "The opportunity isn't to mandate days back in the office. It's to design the moments that benefit most from being together, and let agents handle the coordination overhead that currently fills them.",
     ],
   },
   {
@@ -443,30 +443,24 @@ export const scenes: SceneData[] = [
         title: 'AUDIT THE WORK',
         body: "Most knowledge organizations have never explicitly mapped which work compounds human relationships and which is pure process labor. The audit itself surfaces what's hiding in plain sight.",
         questions: [
-          "For each senior role, what percentage of weekly hours actually requires that role's judgment versus what could be handled below it — or by an agent?",
-          "Which roles have we hired for senior expertise but staffed with junior tasks?",
-          "Where in the workflow does an expert's time create real differentiation, and where is it indistinguishable from anyone else's?",
-          "If we redesigned a given role from scratch today, what would we cut, automate, or elevate?",
+          "For each senior role, what percentage of the week is actually spent on work that requires that level of judgment?",
+          "Which tasks in this role would we be embarrassed to tell a client we still do manually?",
         ],
       },
       {
         title: 'AUTOMATE THE MAINTENANCE',
         body: "The clearest near-term opportunity is the Truth-only layer — bounded, governable, judgment-free tasks that consume expert attention without producing differentiation. This is where reclaimed capacity comes from.",
         questions: [
-          "Which tasks in this role pass the Truth test today, and which need governance investment to get there?",
-          "What is the cost — in senior hours, decision latency, opportunity foregone — of not automating these?",
-          "If automation reclaimed 20% of this role's week, what higher-leverage work would fill it?",
-          "Where are we currently using review loops as a substitute for trust in the underlying output?",
+          "Would any of the involved parties care that the output was AI-generated?",
+          "If automation reclaimed 20% of this role's week, which higher-leverage work would fill it?",
         ],
       },
       {
         title: 'PROTECT THE TIES',
         body: "Some interactions compound trust between people over time. They look like maintenance but they're the actual asset. Automating them quietly erodes the foundation the rest of the work runs on.",
         questions: [
-          "For each client-facing or stakeholder-facing role, which interactions build relational capital that compounds over years?",
           "Where would automating save measurable time this quarter but cost unmeasurable trust over multiple cycles?",
-          "Which moments in this role are explicitly for the relationship, not the deliverable — and is that distinction protected in policy?",
-          "What signal would tell us the relationship is eroding before the revenue does?",
+          "Which interactions in this role are explicitly for the relationship, not the deliverable?",
         ],
       },
       {
@@ -474,9 +468,7 @@ export const scenes: SceneData[] = [
         body: "Reclaimed time only creates leverage if it lands somewhere generative. The opportunity is to engineer the conditions for unexpected collision — giving experts the space, the trust in their inputs, and the cross-pollination that lets them see familiar problems through new lenses. Sometimes that's an in-person convergence. Sometimes it's an agent-curated introduction. The form varies; the intent is deliberate.",
         questions: [
           "When did our most senior experts last engage with a perspective outside their domain on a problem that mattered?",
-          "What would it take for an SME to trust that the work running in the background — the analysis, the drafting, the synthesis — is credible enough to step away from?",
-          "Where in our organization is cross-functional contact accidental, and where could we make it intentional?",
-          "If we redesigned how a senior expert spent a typical month, how much of it would be spent on novel problems versus familiar ones?",
+          "How many hours per month does this role spend on novel problems versus familiar ones?",
         ],
       },
     ],

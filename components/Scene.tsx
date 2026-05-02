@@ -538,7 +538,7 @@ export default function Scene({ scene }: SceneProps) {
                       {card.questions.map((q, qi) => (
                         <li
                           key={qi}
-                          className="text-xs leading-relaxed flex gap-2"
+                          className="text-sm leading-relaxed flex gap-2"
                           style={{ color: 'var(--text-muted)' }}
                         >
                           <span className="flex-shrink-0" style={{ color: 'var(--bcg-green)' }}>—</span>
