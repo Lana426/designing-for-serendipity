@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import type { FlipCardData } from '@/lib/content'
 
@@ -80,13 +79,13 @@ export default function FlipCard({ card, index }: FlipCardProps) {
               border: '1px solid var(--divider)',
             }}
           >
-            {/* Image — explicit px height so Next.js Image fill has a concrete box */}
+            {/* Image — plain img tag avoids position:absolute issues inside preserve-3d context */}
             <div
               style={{
-                position: 'relative',
                 width: '100%',
                 height: `${IMAGE_HEIGHT}px`,
                 overflow: 'hidden',
+                position: 'relative',
               }}
             >
               {imgError ? (
@@ -116,21 +115,24 @@ export default function FlipCard({ card, index }: FlipCardProps) {
                 </div>
               ) : (
                 <>
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={card.imageSrc}
                     alt={card.title}
-                    fill
-                    className="object-cover"
                     loading="lazy"
                     onError={() => setImgError(true)}
-                    sizes="(max-width: 768px) 100vw, 360px"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
                   />
                   <div
                     style={{
                       position: 'absolute',
                       inset: 0,
                       background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%)',
-                      zIndex: 1,
                     }}
                   />
                 </>
