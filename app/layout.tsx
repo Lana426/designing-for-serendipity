@@ -10,22 +10,22 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Designing Agents for Serendipity — A Framework for Agentic Design',
+  title: 'Designing for Serendipity in the Age of Agents — A Framework for Agentic Design',
   description:
     'How to decide what to automate — and what to leave alone — so humans can do the work only humans can do.',
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: 'Designing Agents for Serendipity — A Framework for Agentic Design',
+    title: 'Designing for Serendipity in the Age of Agents — A Framework for Agentic Design',
     description:
       'How to decide what to automate — and what to leave alone — so humans can do the work only humans can do.',
     url: siteUrl,
-    siteName: 'Designing Agents for Serendipity',
+    siteName: 'Designing for Serendipity in the Age of Agents',
     images: [{ url: ogImage, width: 1100, height: 619, alt: 'The 3T Framework' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Designing Agents for Serendipity — A Framework for Agentic Design',
+    title: 'Designing for Serendipity in the Age of Agents — A Framework for Agentic Design',
     description:
       'How to decide what to automate — and what to leave alone — so humans can do the work only humans can do.',
     images: [ogImage],

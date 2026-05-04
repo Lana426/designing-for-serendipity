@@ -343,7 +343,7 @@ export const scenes: SceneData[] = [
     id: 'hero',
     type: 'hero',
     eyebrow: 'A FRAMEWORK FOR AGENTIC DESIGN',
-    heading: 'Designing Agents for Serendipity',
+    heading: 'Designing for Serendipity in the Age of Agents',
     subheading:
       'How to decide what to automate — and what to leave alone — so humans can do the work only humans can do.',
   },
@@ -515,9 +515,7 @@ export const scenes: SceneData[] = [
         descriptor: "Don't leave interaction to chance. Bring different functions into the same problem space — intentionally, and early.",
         imageSrc: '/leader-card-1.png',
         examples: [
-          'Cross-functional problem sessions (not updates)',
-          'Shared ownership of ambiguous problems',
-          'Temporary "tiger teams" across silos',
+          "Instead of handing a problem from one team to another, have multiple teams work on it in parallel with different assumptions — and bring them together before any answer is finalized. The goal isn't alignment, it's to let different perspectives shape the problem itself.",
         ],
       },
       {
@@ -526,9 +524,7 @@ export const scenes: SceneData[] = [
         descriptor: 'If every hour is scheduled, nothing new emerges. Creativity requires space that is not pre-allocated.',
         imageSrc: '/leader-card-2.png',
         examples: [
-          'No-meeting blocks for senior talent',
-          'Time explicitly reserved for exploration, not execution',
-          'Removing low-value recurring work (not just speeding it up)',
+          "Use freed time not just to execute better, but to step back and question direction — giving the people closest to the work space to rethink what should be done, not just how to do it. What used to be leadership thinking can now happen where the context is deepest.",
         ],
       },
       {
@@ -537,9 +533,7 @@ export const scenes: SceneData[] = [
         descriptor: 'Serendipity comes from encountering the right perspectives — not more information.',
         imageSrc: '/leader-card-3.png',
         examples: [
-          'Rotating who works on which problems',
-          'Bringing external viewpoints into internal discussions',
-          'Designing who sits in the same room (physically or virtually)',
+          "Before locking a decision, bring in someone whose work touches the problem indirectly — the person least likely to be invited. The value isn't their answer, but how quickly they surface assumptions everyone else stopped seeing.",
         ],
       },
     ],

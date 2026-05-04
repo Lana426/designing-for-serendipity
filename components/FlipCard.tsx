@@ -9,8 +9,8 @@ interface FlipCardProps {
   index: number
 }
 
-const CARD_HEIGHT = 340
-const IMAGE_HEIGHT = 204  // 60% of card height, explicit px — avoids flex % resolution bugs
+const CARD_HEIGHT = 420
+const IMAGE_HEIGHT = 210  // 50% of card height, explicit px — avoids flex % resolution bugs
 
 export default function FlipCard({ card, index }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false)
@@ -222,16 +222,22 @@ export default function FlipCard({ card, index }: FlipCardProps) {
             >
               Examples
             </p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
-              {card.examples.map((ex, i) => (
-                <li key={i} style={{ display: 'flex', gap: '8px', marginBottom: '10px' }}>
-                  <span style={{ color: 'var(--bcg-green)', flexShrink: 0, fontWeight: 600 }}>—</span>
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.5 }}>
-                    {ex}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            {card.examples.length === 1 ? (
+              <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6, flex: 1, margin: 0 }}>
+                {card.examples[0]}
+              </p>
+            ) : (
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
+                {card.examples.map((ex, i) => (
+                  <li key={i} style={{ display: 'flex', gap: '8px', marginBottom: '10px' }}>
+                    <span style={{ color: 'var(--bcg-green)', flexShrink: 0, fontWeight: 600 }}>—</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.5 }}>
+                      {ex}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
             <p style={{ color: 'var(--text-muted)', fontSize: '10px', textAlign: 'center', margin: 0 }}>
               Tap to flip back
             </p>
