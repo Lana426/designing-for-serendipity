@@ -220,7 +220,7 @@ export default function FlipCard({ card, index }: FlipCardProps) {
                 margin: 0,
               }}
             >
-              Examples
+              Example
             </p>
             {card.examples.length === 1 ? (
               <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6, flex: 1, margin: 0 }}>
