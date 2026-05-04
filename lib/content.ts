@@ -50,6 +50,20 @@ export interface WorkCategoryCardData {
   accentColor: string
 }
 
+export interface FlipCardData {
+  eyebrow: string
+  title: string
+  descriptor: string
+  imageSrc: string
+  examples: string[]
+}
+
+export interface LeaderSectionData {
+  heading: string
+  subhead: string
+  body: string
+}
+
 export interface SceneFootnote {
   prefix: string
   linkText: string
@@ -88,6 +102,9 @@ export interface SceneData {
   footnote?: SceneFootnote
   imageSrc?: string
   imageAlt?: string
+  leaderSection?: LeaderSectionData
+  flipCards?: FlipCardData[]
+  sectionClosingLine?: string
 }
 
 // ─── Industry flow data ───────────────────────────────────────────────────────
@@ -486,6 +503,47 @@ export const scenes: SceneData[] = [
       'When perimeter work is removed and adjacent work is streamlined, capacity shifts toward the core — where trust is built, perspectives collide, and new ideas emerge.',
       'This is where serendipity lives. Not in randomness — but in deliberate exposure to the right people and problems.',
     ],
+    leaderSection: {
+      heading: 'What this means for leaders.',
+      subhead: 'Where does the freed time go? How do leaders actively structure for collision?',
+      body: "Freeing up time is not the outcome — it's the input. Without deliberate design, it gets reabsorbed into more production. The role of leadership shifts from allocating work to designing where attention goes.",
+    },
+    flipCards: [
+      {
+        eyebrow: '01',
+        title: 'Create structured collision',
+        descriptor: "Don't leave interaction to chance. Bring different functions into the same problem space — intentionally, and early.",
+        imageSrc: '/leader-card-1.png',
+        examples: [
+          'Cross-functional problem sessions (not updates)',
+          'Shared ownership of ambiguous problems',
+          'Temporary "tiger teams" across silos',
+        ],
+      },
+      {
+        eyebrow: '02',
+        title: 'Protect unstructured time',
+        descriptor: 'If every hour is scheduled, nothing new emerges. Creativity requires space that is not pre-allocated.',
+        imageSrc: '/leader-card-2.png',
+        examples: [
+          'No-meeting blocks for senior talent',
+          'Time explicitly reserved for exploration, not execution',
+          'Removing low-value recurring work (not just speeding it up)',
+        ],
+      },
+      {
+        eyebrow: '03',
+        title: 'Curate exposure, not just output',
+        descriptor: 'Serendipity comes from encountering the right perspectives — not more information.',
+        imageSrc: '/leader-card-3.png',
+        examples: [
+          'Rotating who works on which problems',
+          'Bringing external viewpoints into internal discussions',
+          'Designing who sits in the same room (physically or virtually)',
+        ],
+      },
+    ],
+    sectionClosingLine: "Serendipity is not a byproduct of free time — it's the result of intentional exposure to the unexpected.",
   },
   {
     id: 'pixar',

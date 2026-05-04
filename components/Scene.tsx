@@ -7,6 +7,7 @@ import type { SceneData } from '@/lib/content'
 import Card from './Card'
 import StaticCard from './StaticCard'
 import WorkCard from './WorkCard'
+import FlipCard from './FlipCard'
 import PullQuote from './PullQuote'
 import ScrollIndicator from './ScrollIndicator'
 import IndustryFlow from './IndustryFlow'
@@ -737,6 +738,53 @@ export default function Scene({ scene }: SceneProps) {
           <PullQuote text={scene.pullquote} large italic />
         )}
       </div>
+
+      {/* Leader sub-section with flip cards */}
+      {scene.flipCards && scene.flipCards.length > 0 && (
+        <div className="max-w-5xl mx-auto mt-20 md:mt-28">
+          {scene.leaderSection && (
+            <div className="max-w-prose mx-auto mb-12 md:mb-16">
+              <motion.h3
+                className="text-xl md:text-2xl font-semibold mb-3 leading-snug"
+                style={{ color: 'var(--text-primary)' }}
+                {...fadeUp}
+              >
+                {scene.leaderSection.heading}
+              </motion.h3>
+              <motion.p
+                className="text-base italic mb-5"
+                style={{ color: 'var(--text-muted)' }}
+                {...fadeUp}
+              >
+                {scene.leaderSection.subhead}
+              </motion.p>
+              <motion.p
+                className="text-base md:text-lg leading-loose"
+                style={{ color: 'var(--text-secondary)' }}
+                {...fadeUp}
+              >
+                {scene.leaderSection.body}
+              </motion.p>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {scene.flipCards.map((card, i) => (
+              <FlipCard key={card.eyebrow} card={card} index={i} />
+            ))}
+          </div>
+
+          {scene.sectionClosingLine && (
+            <motion.p
+              className="text-center text-lg md:text-xl italic mt-14"
+              style={{ color: 'var(--bcg-green)' }}
+              {...fadeUp}
+            >
+              {scene.sectionClosingLine}
+            </motion.p>
+          )}
+        </div>
+      )}
     </section>
   )
 }
