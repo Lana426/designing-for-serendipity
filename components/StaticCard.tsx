@@ -23,7 +23,7 @@ export default function StaticCard({ card, index }: StaticCardProps) {
     >
       {card.number && (
         <div
-          className="font-serif text-5xl font-bold mb-4 leading-none"
+          className="text-5xl font-bold mb-4 leading-none"
           style={{ color: 'var(--bcg-green)' }}
         >
           {card.number}

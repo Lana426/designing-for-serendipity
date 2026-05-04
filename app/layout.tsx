@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import ArchitectFAQRoot from '@/components/ArchitectFAQRoot'
 
 const siteUrl = 'https://designing-for-serendipity.vercel.app'
 const ogImage = '/3t-framework.png'
@@ -41,7 +42,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ArchitectFAQRoot />
+      </body>
     </html>
   )
 }

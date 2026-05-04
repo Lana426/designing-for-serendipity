@@ -135,7 +135,7 @@ export default function Scene({ scene }: SceneProps) {
           </motion.p>
 
           <motion.h1
-            className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.05] tracking-tight"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.05] tracking-tight"
             style={{ color: 'var(--text-primary)' }}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -191,7 +191,7 @@ export default function Scene({ scene }: SceneProps) {
 
           {scene.openingLine && (
             <motion.p
-              className="font-serif text-2xl md:text-4xl font-semibold mb-10 leading-snug"
+              className="text-2xl md:text-4xl font-semibold mb-10 leading-snug"
               style={{ color: 'var(--text-primary)' }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -206,7 +206,7 @@ export default function Scene({ scene }: SceneProps) {
             {lines.map((line, i) => (
               <motion.h2
                 key={i}
-                className="font-serif text-xl md:text-3xl lg:text-4xl font-light leading-snug"
+                className="text-xl md:text-3xl lg:text-4xl font-light leading-snug"
                 style={{ color: 'var(--text-primary)' }}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -231,7 +231,7 @@ export default function Scene({ scene }: SceneProps) {
 
           {scene.finalLine && (
             <motion.p
-              className="font-serif text-xl md:text-3xl italic mt-16"
+              className="text-xl md:text-3xl italic mt-16"
               style={{ color: 'var(--bcg-green)' }}
               initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -266,7 +266,7 @@ export default function Scene({ scene }: SceneProps) {
           </motion.p>
 
           <motion.h2
-            className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold mb-4 text-center leading-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-4 text-center leading-tight"
             style={{ color: 'var(--text-primary)' }}
             {...fadeUp}
           >
@@ -385,7 +385,7 @@ export default function Scene({ scene }: SceneProps) {
       >
         <div className="max-w-5xl mx-auto">
           <motion.h2
-            className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold mb-6 text-center leading-tight"
+            className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-6 text-center leading-tight"
             style={{ color: 'var(--text-primary)' }}
             {...fadeUp}
           >
@@ -436,7 +436,7 @@ export default function Scene({ scene }: SceneProps) {
       >
         <div className="max-w-5xl mx-auto">
           <motion.h2
-            className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 text-center"
+            className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 text-center"
             style={{ color: 'var(--text-primary)' }}
             {...fadeUp}
           >
@@ -469,7 +469,7 @@ export default function Scene({ scene }: SceneProps) {
       >
         <div className="max-w-5xl mx-auto">
           <motion.h2
-            className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 text-center"
+            className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 text-center"
             style={{ color: 'var(--text-primary)' }}
             {...fadeUp}
           >
@@ -544,7 +544,7 @@ export default function Scene({ scene }: SceneProps) {
           {/* Heading */}
           <div className="max-w-prose mx-auto">
             <motion.h2
-              className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight"
               style={{ color: 'var(--text-primary)' }}
               {...fadeUp}
             >
@@ -586,7 +586,7 @@ export default function Scene({ scene }: SceneProps) {
       <section id={scene.id} className="py-24 md:py-32 px-5 md:px-6">
         <div className="max-w-prose mx-auto">
           <motion.h2
-            className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold mb-10"
+            className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-10"
             style={{ color: 'var(--text-primary)' }}
             {...fadeUp}
           >
@@ -650,7 +650,7 @@ export default function Scene({ scene }: SceneProps) {
       <section id={scene.id} className="py-24 md:py-32 px-5 md:px-6">
         <div className="max-w-prose mx-auto">
           <motion.h2
-            className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold mb-10"
+            className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-10"
             style={{ color: 'var(--text-primary)' }}
             {...fadeUp}
           >
@@ -670,7 +670,7 @@ export default function Scene({ scene }: SceneProps) {
 
           {scene.pullquote && (
             <motion.p
-              className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold text-center my-14 md:my-16 leading-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-semibold text-center my-14 md:my-16 leading-tight"
               style={{ color: 'var(--bcg-green)' }}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -715,7 +715,7 @@ export default function Scene({ scene }: SceneProps) {
     <section id={scene.id} className="py-24 md:py-32 px-5 md:px-6">
       <div className="max-w-prose mx-auto">
         <motion.h2
-          className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold mb-10 leading-snug"
+          className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-10 leading-snug"
           style={{ color: 'var(--text-primary)' }}
           {...fadeUp}
         >

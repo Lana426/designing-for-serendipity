@@ -478,15 +478,6 @@ export const scenes: SceneData[] = [
     subheading: 'Pick an industry. Watch a real task move through the framework.',
   },
   {
-    id: 'the-trap',
-    type: 'body',
-    heading: 'A note on where the work happens.',
-    body: [
-      'Returning time to people only matters if there\'s somewhere meaningful for that time to land. Most knowledge work has gone hybrid, and most hybrid setups have quietly lost what the office was actually for. Productivity transferred to remote just fine. Collision didn\'t — the unplanned conversation, the cross-functional friction, the trust that builds when people share space without an agenda.',
-      "The opportunity isn't to mandate days back in the office. It's to design the moments that benefit most from being together, and let agents handle the coordination overhead that currently fills them.",
-    ],
-  },
-  {
     id: 'what-unlocks',
     type: 'body',
     heading: 'What this unlocks.',

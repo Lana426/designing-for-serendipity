@@ -38,7 +38,7 @@ export default function WorkCard({ card, index }: WorkCardProps) {
 
       <div>
         <h3
-          className="font-serif text-2xl font-semibold mb-1 leading-snug"
+          className="text-2xl font-semibold mb-1 leading-snug"
           style={{ color: 'var(--text-primary)' }}
         >
           {card.title}

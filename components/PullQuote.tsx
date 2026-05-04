@@ -17,7 +17,7 @@ export default function PullQuote({ text, large = false, italic = false }: PullQ
       transition={{ duration: 0.7, ease: 'easeOut' }}
       className={`text-center mx-auto my-16 max-w-prose ${
         large ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl'
-      } ${italic ? 'italic' : 'font-semibold'} font-serif leading-tight`}
+      } ${italic ? 'italic' : 'font-semibold'} leading-tight`}
       style={{ color: 'var(--bcg-green)' }}
     >
       {text}
