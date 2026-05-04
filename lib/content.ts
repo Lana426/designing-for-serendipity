@@ -557,10 +557,11 @@ export const scenes: SceneData[] = [
     type: 'thesis',
     eyebrow: 'THE THESIS',
     openingLine: 'Automation should be precise — not pervasive.',
+    subheading: 'Not to do more work, but to create space for better thinking.',
     heading:
-      'Transparent enough to preserve trust.\nTargeted enough to return attention.\nRestrained enough to leave the authentically human work alone.',
+      'Transparent enough to preserve trust.\nTargeted enough to shift attention toward human judgment.\nRestrained enough to protect the relationships that create value over time.',
     body: [
-      "The goal isn't to automate more. It's to automate deliberately — separating what can be scaled from what creates value because it can't.",
+      "The goal isn't to automate more, it's to decide what not to.",
       "The question for every leader is simple: what work in your organization is truly human — and are you protecting it?",
     ],
     finalLine: "The next era of competitive advantage won't be engineered. It will be designed.",

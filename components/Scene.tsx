@@ -192,7 +192,7 @@ export default function Scene({ scene }: SceneProps) {
 
           {scene.openingLine && (
             <motion.p
-              className="text-2xl md:text-4xl font-semibold mb-10 leading-snug"
+              className="text-2xl md:text-4xl font-semibold mb-4 leading-snug"
               style={{ color: 'var(--text-primary)' }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -200,6 +200,19 @@ export default function Scene({ scene }: SceneProps) {
               transition={{ duration: 0.7, ease: 'easeOut' }}
             >
               {scene.openingLine}
+            </motion.p>
+          )}
+
+          {scene.subheading && (
+            <motion.p
+              className="text-base md:text-lg mb-12 leading-relaxed"
+              style={{ color: 'var(--text-secondary)' }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.6, ease: 'easeOut' }}
+            >
+              {scene.subheading}
             </motion.p>
           )}
 
