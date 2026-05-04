@@ -548,7 +548,7 @@ export const scenes: SceneData[] = [
     heading: 'Pixar understood this.',
     body: [
       "Steve Jobs designed Pixar's building so that animators, engineers, and writers all had to pass through the same central atrium every day. No agenda, no meeting invite — just architecture that made accidental cross-functional collision inevitable. The creative output Pixar became famous for didn't emerge from optimized silos. It emerged from those intersections.",
-      "The 3T Framework is the modern version of that atrium. It doesn't tell you which conversations to have. It tells you which work to clear out of the way so the conversations can happen at all. Automation is the renovation. The collisions are still up to us.",
+      "This approach is the modern version of that atrium. It doesn't tell you which conversations to have - it determines what work gets cleared so the people closest to the problem can step back, challenge direction, and think together. Automation creates the space. How it's used is the difference.",
     ],
     pullquote: '"The building was the product."',
   },
