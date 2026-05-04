@@ -7,10 +7,10 @@ export interface CardData {
 }
 
 export interface StaticCardData {
-  number: string
+  number?: string
   title: string
   subtitle: string
-  body: string
+  body?: string
 }
 
 export interface FrameworkColumnData {
@@ -30,7 +30,7 @@ export interface FilterResult {
 export interface IndustryTask {
   task: string
   filters: FilterResult[]
-  verdict: 'Automate' | 'Augment' | 'Leave alone'
+  verdict: 'Perimeter' | 'Adjacent' | 'Core'
   verdictNote: string
 }
 
@@ -40,10 +40,14 @@ export interface IndustryData {
   tasks: [IndustryTask, IndustryTask]
 }
 
-export interface PracticeCardData {
+export interface WorkCategoryCardData {
+  eyebrow: string
   title: string
-  body: string
-  questions?: string[]
+  descriptor: string
+  reliance: string
+  attributes: string[]
+  decision: string
+  accentColor: string
 }
 
 export interface SceneFootnote {
@@ -64,7 +68,7 @@ export interface SceneData {
     | 'framework-hero'
     | 'industry-flow'
     | 'pixar-hero'
-    | 'practice-cards'
+    | 'work-types'
   eyebrow?: string
   heading?: string
   subheading?: string
@@ -72,8 +76,12 @@ export interface SceneData {
   pullquote?: string
   cards?: CardData[]
   staticCards?: StaticCardData[]
-  practiceCards?: PracticeCardData[]
+  workCards?: WorkCategoryCardData[]
   frameworkColumns?: FrameworkColumnData[]
+  framingBody?: string[]
+  setupIntro?: string
+  setupItems?: string[]
+  openingLine?: string
   listItems?: string[]
   closingLine?: string
   finalLine?: string
@@ -111,8 +119,8 @@ export const industryData: IndustryData[] = [
             annotation: "Doesn't build relationship — it's record-keeping.",
           },
         ],
-        verdict: 'Automate',
-        verdictNote: "Free up the rep's attention for the next conversation.",
+        verdict: 'Perimeter',
+        verdictNote: 'Reversible, internally scoped, not load-bearing.',
       },
       {
         task: 'Sending the quarterly check-in email to a top-tier customer.',
@@ -136,8 +144,8 @@ export const industryData: IndustryData[] = [
             annotation: 'This is a relationship deposit. Automating liquidates it.',
           },
         ],
-        verdict: 'Leave alone',
-        verdictNote: 'Or at most, augment — let an agent prep context, but the human sends and signs.',
+        verdict: 'Core',
+        verdictNote: 'Identity-bearing and trust-bearing. Agent prepares context; human sends and signs.',
       },
     ],
   },
@@ -167,8 +175,8 @@ export const industryData: IndustryData[] = [
             annotation: "Doesn't replace the patient interaction, it prepares for it.",
           },
         ],
-        verdict: 'Augment',
-        verdictNote: 'Agent prepares; clinician verifies and decides.',
+        verdict: 'Adjacent',
+        verdictNote: 'Externally consequential and identity-bearing. Agent drafts, clinician verifies.',
       },
       {
         task: 'Delivering a difficult diagnosis to a patient.',
@@ -192,8 +200,8 @@ export const industryData: IndustryData[] = [
             annotation: "This is the relationship. Automating it doesn't just fail; it harms.",
           },
         ],
-        verdict: 'Leave alone',
-        verdictNote: 'Fully human. An agent has no place in this room.',
+        verdict: 'Core',
+        verdictNote: 'Constitutively human. Presence is the product.',
       },
     ],
   },
@@ -223,8 +231,8 @@ export const industryData: IndustryData[] = [
             annotation: "Doesn't replace client counsel — it prepares for it.",
           },
         ],
-        verdict: 'Augment',
-        verdictNote: 'Agent surfaces deviations; attorney decides what matters.',
+        verdict: 'Adjacent',
+        verdictNote: 'Externally consequential, recoverable but costly. Agent surfaces deviations; attorney decides.',
       },
       {
         task: 'Counseling a client through a high-stakes negotiation strategy.',
@@ -245,11 +253,11 @@ export const industryData: IndustryData[] = [
             label: 'Ties',
             verdict: 'Fail',
             pass: 'fail',
-            annotation: "This is the relationship — every conversation builds the trust the engagement runs on.",
+            annotation: "Every conversation builds the trust the engagement runs on.",
           },
         ],
-        verdict: 'Leave alone',
-        verdictNote: "Fully human. The framework's job is to protect this work, not optimize it.",
+        verdict: 'Core',
+        verdictNote: 'Trust-bearing. Presence is the product.',
       },
     ],
   },
@@ -279,8 +287,8 @@ export const industryData: IndustryData[] = [
             annotation: "Doesn't shape any relationship — it's reporting hygiene.",
           },
         ],
-        verdict: 'Automate',
-        verdictNote: 'Free up the analyst for the analysis that actually matters.',
+        verdict: 'Perimeter',
+        verdictNote: 'Reversible, internally scoped, not load-bearing.',
       },
       {
         task: 'Walking the audit committee through a controversial accounting judgment.',
@@ -295,17 +303,17 @@ export const industryData: IndustryData[] = [
             label: 'Truth',
             verdict: 'Warn',
             pass: 'warn',
-            annotation: 'The judgment itself can be agent-supported, but the framing must be human.',
+            annotation: 'The judgment can be agent-supported, but the framing must be human.',
           },
           {
             label: 'Ties',
             verdict: 'Fail',
             pass: 'fail',
-            annotation: 'Audit committee trust is built one meeting at a time; automating erodes it silently.',
+            annotation: 'Audit committee trust is built one meeting at a time.',
           },
         ],
-        verdict: 'Leave alone',
-        verdictNote: 'Agent can prep the analysis. The room belongs to the CFO.',
+        verdict: 'Core',
+        verdictNote: 'Identity-bearing and trust-bearing. Agent preps the analysis; the room belongs to the CFO.',
       },
     ],
   },
@@ -325,50 +333,47 @@ export const scenes: SceneData[] = [
   {
     id: 'old-equation',
     type: 'body',
-    heading: 'The old growth equation is breaking.',
+    heading: 'Falling input costs are eroding differentiation in traditional growth models',
     body: [
-      'For decades, growth ran on a familiar equation: more inputs, exponential outputs. Specialization was the engine, economies of scale rewarded it, and organizations were built around the logic — functional silos, deep expertise, repeatable processes producing more of the same thing, faster. To be world-class at marketing, you became a marketer. To scale engineering, you built engineering orgs. The result was organizations full of deeply knowledgeable people optimizing within their lanes — and for a long time, that was enough.',
-      "But inputs are collapsing in cost. Code that took a quarter takes an afternoon. A deck that took a week takes an hour. Content, analysis, first drafts, prototypes — the cost of producing them is trending toward zero. Output is multiplying, ROI is harder to track, and most of what's being produced is starting to look indistinguishable from everyone else's. The old equation still runs. It just no longer differentiates.",
+      'For decades, growth followed a simple logic: more inputs equal more output. Specialization scaled it — functional silos, repeatable processes, deep expertise.',
+      'That model still runs. It just no longer differentiates.',
+      'The cost of producing knowledge work is collapsing. What took weeks now takes hours. Code, analysis, content — all cheaper, faster, and increasingly indistinguishable.',
+      'Output is exploding. Differentiation is not.',
     ],
   },
   {
     id: 'creativity',
     type: 'body',
-    heading: 'Creativity is the new differentiator.',
+    heading: 'As production commoditizes, creativity becomes a credible scalable differentiator',
     body: [
-      "When everyone can produce, production stops being the differentiator. Take the music industry as an example: the cost of making music collapsed, anyone can record on a laptop and go viral, volume exploded — and yet certain artists still cut through. The democratization of tools didn't eliminate the difference between noise and art. It made the difference matter more. The same dynamic is hitting every knowledge industry now.",
-      "What separates the work that lands is the rare thing automation can't manufacture: genuine creative insight, the unexpected angle, the idea that lands in someone's chest. The next wave of growth is indexed on creativity — and most organizations aren't designed for it.",
+      "As production commoditizes, creativity becomes the differentiator. When anyone can produce, production stops being scarce. What stands out is what can't be manufactured: genuine insight, unexpected angles, ideas that resonate.",
+      "We've already seen this dynamic play out. Take the music industry as an example: the cost of making music collapsed, anyone can record on a laptop and go viral, volume exploded — and yet certain artists still cut through. The democratization of tools didn't eliminate the difference between noise and art. It made the difference matter more.",
+      'The same shift is now hitting every knowledge industry.',
+      "The next wave of growth won't come from producing more. It will come from thinking differently.",
+      "Most organizations aren't designed for that.",
     ],
-    pullquote: 'Output is solved. The human layer is wide open.',
   },
   {
     id: 'conditions',
     type: 'cards',
-    heading: "Creativity isn't magic. It has conditions.",
+    heading: "Creativity isn't random — it emerges under specific conditions.",
     subheading:
-      'Three conditions, all required. Most organizations achieve one. Almost none achieve all three.',
+      'If we want to design agentic systems that enhance it (rather than suppress it), we need to understand what those conditions are.',
     staticCards: [
       {
-        number: '01',
         title: 'Safety',
-        subtitle: 'Trusting what — and who — you\'re working with.',
-        body: 'When people doubt the inputs, the systems, or the people around them, energy shifts from creating to checking.',
+        subtitle: "When people don't trust inputs, systems, or each other, they stop creating and start checking.",
       },
       {
-        number: '02',
         title: 'Autonomy',
-        subtitle: 'Time to solve the problems you\'ve built a career to solve.',
-        body: 'Expertise compounds when the people who hold it actually get to use it — most experts are buried in process before the thinking can begin.',
+        subtitle: 'Expertise compounds only when people have time to use it — most are buried in process work before thinking begins.',
       },
       {
-        number: '03',
         title: 'Collision',
-        subtitle: 'Different minds, encountering the same problem, thinking together.',
-        body: 'Breakthroughs come from friction across disciplines — and that takes shared context, not just shared screens.',
+        subtitle: 'Breakthroughs come from different perspectives meeting the same problem — which requires shared context, not just shared tools.',
       },
     ],
-    closingLine:
-      'These are the conditions creativity needs. The question is: how do we design agentic systems that protect them?',
+    closingLine: 'These conditions define what we need to protect — the question is how?',
     footnote: {
       prefix: 'On the conditions for creativity →',
       linkText: 'hintsa.com',
@@ -378,31 +383,93 @@ export const scenes: SceneData[] = [
   {
     id: 'framework',
     type: 'framework-hero',
-    eyebrow: 'THE FRAMEWORK',
-    heading: 'The 3T Framework.',
-    subheading: 'A diagnostic lens for deciding what to automate.',
+    eyebrow: 'A SIMPLE LENS',
+    heading: 'Trust, Truth, and Ties',
+    subheading: 'A diagnostic lens for deciding what to automate — because not everything that can be automated should be.',
+    framingBody: [
+      'Poorly applied automation breaks trust, introduces unreliable outputs, and removes the human interactions where ideas emerge.',
+      'Trust, Truth, and Ties define where that risk exists. They are the constraints that determine whether automation creates space for better thinking — or quietly destroys it.',
+    ],
+    setupIntro: "Not all work should be automated — but the reason isn't always obvious. In practice, it comes down to three factors:",
+    setupItems: [
+      'Trust — whether a human is expected',
+      'Truth — whether the output can be relied on',
+      'Ties — whether the interaction builds a relationship',
+    ],
     frameworkColumns: [
       {
         letter: 'Trust',
         title: 'Source',
         question: 'Does the other party expect a human?',
-        body: 'Some interactions carry an implicit promise of human presence. Automating where that promise lives erodes trust silently. Ask: would the person on the other end feel deceived if they knew?',
+        body: 'Some interactions carry an implicit promise of human presence. Automating them erodes trust — often invisibly.',
       },
       {
         letter: 'Truth',
         title: 'Output',
-        question: "Can the agent's work be trusted without your eyes on it?",
-        body: "This is the prerequisite for everything else. Reclaimed time is only real if you can act on the output without re-doing it in your head. Reliability, accuracy, and governance are what determine whether automation returns capacity or quietly consumes it.",
+        question: 'Can the output be trusted without rework?',
+        body: 'Automation only creates capacity if the result can be used as-is. Otherwise, it quietly shifts the work from doing the work to overseeing the work.',
       },
       {
         letter: 'Ties',
         title: 'Relationship',
-        question: 'Can it be automated — and should it?',
-        body: "Some interactions compound trust between people over time. Every exchange is a deposit. Automating them doesn't just make them less meaningful; it liquidates an asset that took years to build. Ask: would automating this take something away that compounds?",
+        question: 'Does this interaction build trust over time?',
+        body: "Some exchanges compound value. Automating them doesn't save time — it erodes an asset.",
       },
     ],
     closingLine:
-      'Run any task through these three filters. The answer that comes out the other side is one of three verdicts: Automate. Augment. Leave alone.',
+      "In practice, these three factors don't need to be evaluated independently — they consistently resolve into three types of work.",
+  },
+  {
+    id: 'work-types',
+    type: 'work-types',
+    heading: 'Three types of work.',
+    setupIntro: 'Tasks differ in how much they depend on trust, truth, and relationships. That difference determines how they should be handled:',
+    setupItems: [
+      'Automate — when these factors are low',
+      'Augment — when they matter, but can be supported',
+      'Protect — when they are the value',
+    ],
+    workCards: [
+      {
+        eyebrow: 'PERIMETER',
+        title: 'Automate',
+        descriptor: 'Full autonomy.',
+        reliance: 'Low reliance on Trust, Truth, and Ties.',
+        attributes: [
+          '**Reversible** — no external party is affected by failure',
+          '**Internally scoped** — stays within the human\'s workspace',
+          '**Not load-bearing** — does not shape how understanding of the work is formed',
+        ],
+        decision: 'Automate fully',
+        accentColor: 'var(--bcg-green)',
+      },
+      {
+        eyebrow: 'ADJACENT',
+        title: 'Augment',
+        descriptor: 'Propose, then confirm.',
+        reliance: 'Moderate reliance on Trust, Truth, and Ties.',
+        attributes: [
+          '**Externally consequential** — others rely on the output',
+          '**Identity-bearing** — represents the human\'s judgment',
+          '**Recoverable, but costly** — errors damage credibility',
+        ],
+        decision: 'Agent drafts, human decides',
+        accentColor: 'var(--accent-warm)',
+      },
+      {
+        eyebrow: 'CORE',
+        title: 'Protect',
+        descriptor: 'No autonomy.',
+        reliance: 'High reliance on Trust, Truth, and Ties.',
+        attributes: [
+          '**Constitutively human** — value depends on human origin',
+          '**Trust-bearing** — builds relationships over time',
+          '**Presence is the product** — the interaction itself creates value',
+        ],
+        decision: 'Do not automate — remove other work instead',
+        accentColor: 'var(--accent-protect)',
+      },
+    ],
   },
   {
     id: 'industry-flow',
@@ -420,6 +487,16 @@ export const scenes: SceneData[] = [
     ],
   },
   {
+    id: 'what-unlocks',
+    type: 'body',
+    heading: 'What this unlocks.',
+    body: [
+      'Automation doesn\'t create advantage by saving time. It creates advantage by where that time goes.',
+      'When perimeter work is removed and adjacent work is streamlined, capacity shifts toward the core — where trust is built, perspectives collide, and new ideas emerge.',
+      'This is where serendipity lives. Not in randomness — but in deliberate exposure to the right people and problems.',
+    ],
+  },
+  {
     id: 'pixar',
     type: 'pixar-hero',
     imageSrc: '/pixar-atrium.png',
@@ -433,55 +510,15 @@ export const scenes: SceneData[] = [
     pullquote: '"The building was the product."',
   },
   {
-    id: 'practice',
-    type: 'practice-cards',
-    heading: 'What this means in practice.',
-    subheading:
-      'A diagnostic for leaders deciding which work to automate, which to protect, and where to design for connection.',
-    practiceCards: [
-      {
-        title: 'AUDIT THE WORK',
-        body: "Most knowledge organizations have never explicitly mapped which work compounds human relationships and which is pure process labor. The audit itself surfaces what's hiding in plain sight.",
-        questions: [
-          "For each senior role, what percentage of the week is actually spent on work that requires that level of judgment?",
-          "Which tasks in this role would we be embarrassed to tell a client we still do manually?",
-        ],
-      },
-      {
-        title: 'AUTOMATE THE MAINTENANCE',
-        body: "The clearest near-term opportunity is the Truth-only layer — bounded, governable, judgment-free tasks that consume expert attention without producing differentiation. This is where reclaimed capacity comes from.",
-        questions: [
-          "Would any of the involved parties care that the output was AI-generated?",
-          "If automation reclaimed 20% of this role's week, which higher-leverage work would fill it?",
-        ],
-      },
-      {
-        title: 'PROTECT THE TIES',
-        body: "Some interactions compound trust between people over time. They look like maintenance but they're the actual asset. Automating them quietly erodes the foundation the rest of the work runs on.",
-        questions: [
-          "Where would automating save measurable time this quarter but cost unmeasurable trust over multiple cycles?",
-          "Which interactions in this role are explicitly for the relationship, not the deliverable?",
-        ],
-      },
-      {
-        title: 'DESIGN FOR SERENDIPITY',
-        body: "Reclaimed time only creates leverage if it lands somewhere generative. The opportunity is to engineer the conditions for unexpected collision — giving experts the space, the trust in their inputs, and the cross-pollination that lets them see familiar problems through new lenses. Sometimes that's an in-person convergence. Sometimes it's an agent-curated introduction. The form varies; the intent is deliberate.",
-        questions: [
-          "When did our most senior experts last engage with a perspective outside their domain on a problem that mattered?",
-          "How many hours per month does this role spend on novel problems versus familiar ones?",
-        ],
-      },
-    ],
-  },
-  {
     id: 'thesis',
     type: 'thesis',
     eyebrow: 'THE THESIS',
+    openingLine: 'Automation should be precise — not pervasive.',
     heading:
-      'Transparent enough to preserve trust.\nTargeted enough to return attention to what matters.\nRestrained enough to leave the authentically human work alone.',
+      'Transparent enough to preserve trust.\nTargeted enough to return attention.\nRestrained enough to leave the authentically human work alone.',
     body: [
-      "The 3T Framework isn't about doing less. It's about being deliberate — separating the work that should be handed to agents from the work that compounds value precisely because it's human. The judgment is still yours. The framework's role is to make the trade-offs explicit, so they get made on purpose, not by default.",
-      "The question for every leader is the same: which of your organization's work is genuinely human — and what are you doing to protect it?",
+      "The goal isn't to automate more. It's to automate deliberately — separating what can be scaled from what creates value because it can't.",
+      "The question for every leader is simple: what work in your organization is truly human — and are you protecting it?",
     ],
     finalLine: "The next era of competitive advantage won't be engineered. It will be designed.",
   },

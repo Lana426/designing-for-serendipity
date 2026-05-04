@@ -21,12 +21,14 @@ export default function StaticCard({ card, index }: StaticCardProps) {
         border: '1px solid var(--divider)',
       }}
     >
-      <div
-        className="font-serif text-5xl font-bold mb-4 leading-none"
-        style={{ color: 'var(--bcg-green)' }}
-      >
-        {card.number}
-      </div>
+      {card.number && (
+        <div
+          className="font-serif text-5xl font-bold mb-4 leading-none"
+          style={{ color: 'var(--bcg-green)' }}
+        >
+          {card.number}
+        </div>
+      )}
       <h3
         className="text-lg font-semibold mb-2 leading-snug"
         style={{ color: 'var(--text-primary)' }}
@@ -39,12 +41,14 @@ export default function StaticCard({ card, index }: StaticCardProps) {
       >
         {card.subtitle}
       </p>
-      <p
-        className="text-sm leading-relaxed"
-        style={{ color: 'var(--text-secondary)' }}
-      >
-        {card.body}
-      </p>
+      {card.body && (
+        <p
+          className="text-sm leading-relaxed"
+          style={{ color: 'var(--text-secondary)' }}
+        >
+          {card.body}
+        </p>
+      )}
     </motion.div>
   )
 }

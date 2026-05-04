@@ -26,6 +26,7 @@
   --divider: rgba(255, 255, 255, 0.08);
   --accent-warm: #F6A623;
   --accent-warning: #E53E3E;
+  --accent-protect: #0F4C5C;
 }
 
 * {

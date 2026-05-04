@@ -6,6 +6,7 @@ import { motion, type Transition } from 'framer-motion'
 import type { SceneData } from '@/lib/content'
 import Card from './Card'
 import StaticCard from './StaticCard'
+import WorkCard from './WorkCard'
 import PullQuote from './PullQuote'
 import ScrollIndicator from './ScrollIndicator'
 import IndustryFlow from './IndustryFlow'
@@ -188,6 +189,19 @@ export default function Scene({ scene }: SceneProps) {
             {scene.eyebrow}
           </motion.p>
 
+          {scene.openingLine && (
+            <motion.p
+              className="font-serif text-2xl md:text-4xl font-semibold mb-10 leading-snug"
+              style={{ color: 'var(--text-primary)' }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
+              {scene.openingLine}
+            </motion.p>
+          )}
+
           <div className="flex flex-col gap-3 mb-12">
             {lines.map((line, i) => (
               <motion.h2
@@ -235,7 +249,6 @@ export default function Scene({ scene }: SceneProps) {
   // ── Framework hero ────────────────────────────────────────────────────────
   if (scene.type === 'framework-hero') {
     const cols = scene.frameworkColumns ?? []
-    const closingParts = scene.closingLine?.split(': ') ?? []
 
     return (
       <section
@@ -279,6 +292,47 @@ export default function Scene({ scene }: SceneProps) {
             />
           </motion.div>
 
+          {/* Framing paragraphs */}
+          {scene.framingBody && scene.framingBody.length > 0 && (
+            <div className="max-w-prose mx-auto mb-10">
+              {scene.framingBody.map((p, i) => (
+                <motion.p
+                  key={i}
+                  className="text-base md:text-lg leading-loose mb-5"
+                  style={{ color: 'var(--text-secondary)' }}
+                  {...fadeUp}
+                >
+                  {p}
+                </motion.p>
+              ))}
+            </div>
+          )}
+
+          {/* Setup block */}
+          {scene.setupIntro && (
+            <motion.div className="max-w-prose mx-auto mb-12" {...fadeUp}>
+              <p className="text-sm md:text-base mb-4" style={{ color: 'var(--text-secondary)' }}>
+                {scene.setupIntro}
+              </p>
+              {scene.setupItems && scene.setupItems.length > 0 && (
+                <ul className="space-y-2 pl-1">
+                  {scene.setupItems.map((item, i) => (
+                    <li key={i} className="text-sm md:text-base flex gap-3" style={{ color: 'var(--text-secondary)' }}>
+                      <span className="flex-shrink-0 font-bold" style={{ color: 'var(--bcg-green)' }}>—</span>
+                      <span>
+                        <strong style={{ color: 'var(--text-primary)' }}>
+                          {item.split(' — ')[0]}
+                        </strong>
+                        {' — '}
+                        {item.split(' — ').slice(1).join(' — ')}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </motion.div>
+          )}
+
           {/* Three columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             {cols.map((col, i) => (
@@ -309,14 +363,64 @@ export default function Scene({ scene }: SceneProps) {
 
           {scene.closingLine && (
             <motion.p
-              className="text-sm md:text-base text-center leading-relaxed"
+              className="text-sm md:text-base text-center leading-relaxed italic max-w-prose mx-auto"
               style={{ color: 'var(--text-secondary)' }}
               {...fadeUp}
             >
-              {closingParts[0]}:{' '}
-              <strong style={{ color: 'var(--text-primary)' }}>{closingParts[1]}</strong>
+              {scene.closingLine}
             </motion.p>
           )}
+        </div>
+      </section>
+    )
+  }
+
+  // ── Work types (Perimeter / Adjacent / Core) ──────────────────────────────
+  if (scene.type === 'work-types') {
+    return (
+      <section
+        id={scene.id}
+        className="py-24 md:py-32 px-5 md:px-6"
+        style={{ background: 'var(--bg-elevated)' }}
+      >
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold mb-6 text-center leading-tight"
+            style={{ color: 'var(--text-primary)' }}
+            {...fadeUp}
+          >
+            {scene.heading}
+          </motion.h2>
+
+          {scene.setupIntro && (
+            <motion.div className="max-w-prose mx-auto mb-12 text-center" {...fadeUp}>
+              <p className="text-sm md:text-base mb-4" style={{ color: 'var(--text-secondary)' }}>
+                {scene.setupIntro}
+              </p>
+              {scene.setupItems && scene.setupItems.length > 0 && (
+                <ul className="inline-flex flex-col items-start gap-2 text-left">
+                  {scene.setupItems.map((item, i) => (
+                    <li key={i} className="text-sm md:text-base flex gap-3" style={{ color: 'var(--text-secondary)' }}>
+                      <span className="flex-shrink-0 font-bold" style={{ color: 'var(--bcg-green)' }}>—</span>
+                      <span>
+                        <strong style={{ color: 'var(--text-primary)' }}>
+                          {item.split(' — ')[0]}
+                        </strong>
+                        {' — '}
+                        {item.split(' — ').slice(1).join(' — ')}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </motion.div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {scene.workCards?.map((card, i) => (
+              <WorkCard key={card.eyebrow} card={card} index={i} />
+            ))}
+          </div>
         </div>
       </section>
     )
@@ -374,8 +478,8 @@ export default function Scene({ scene }: SceneProps) {
 
           {scene.subheading && (
             <motion.p
-              className="text-center mb-12 md:mb-16 text-sm uppercase tracking-widest"
-              style={{ color: 'var(--text-muted)' }}
+              className="text-center mb-12 md:mb-16 text-sm md:text-base max-w-prose mx-auto font-light italic"
+              style={{ color: 'var(--text-secondary)' }}
               {...fadeUp}
             >
               {scene.subheading}
@@ -385,7 +489,7 @@ export default function Scene({ scene }: SceneProps) {
           {scene.staticCards ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {scene.staticCards.map((card, i) => (
-                <StaticCard key={card.number} card={card} index={i} />
+                <StaticCard key={card.title} card={card} index={i} />
               ))}
             </div>
           ) : (
@@ -470,86 +574,6 @@ export default function Scene({ scene }: SceneProps) {
                 {bodyAfter}
               </motion.p>
             )}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  // ── Practice cards (2×2 grid) ─────────────────────────────────────────────
-  if (scene.type === 'practice-cards') {
-    return (
-      <section
-        id={scene.id}
-        className="py-24 md:py-32 px-5 md:px-6"
-        style={{ background: 'var(--bg-elevated)' }}
-      >
-        <div className="max-w-5xl mx-auto">
-          <motion.h2
-            className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 text-center"
-            style={{ color: 'var(--text-primary)' }}
-            {...fadeUp}
-          >
-            {scene.heading}
-          </motion.h2>
-
-          {scene.subheading && (
-            <motion.p
-              className="text-sm md:text-base text-center mb-12 md:mb-16 max-w-prose mx-auto"
-              style={{ color: 'var(--text-muted)' }}
-              {...fadeUp}
-            >
-              {scene.subheading}
-            </motion.p>
-          )}
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {scene.practiceCards?.map((card, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ delay: i * 0.1, duration: 0.6, ease: 'easeOut' }}
-                className="pt-5"
-                style={{ borderTop: '2px solid var(--bcg-green)' }}
-              >
-                <p
-                  className="text-xs uppercase tracking-widest font-semibold mb-3"
-                  style={{ color: 'var(--bcg-green)' }}
-                >
-                  {card.title}
-                </p>
-                <p
-                  className="text-sm md:text-base leading-relaxed mb-4"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
-                  {card.body}
-                </p>
-                {card.questions && card.questions.length > 0 && (
-                  <div>
-                    <p
-                      className="text-xs uppercase tracking-widest font-semibold mb-2"
-                      style={{ color: 'var(--bcg-green)' }}
-                    >
-                      Ask:
-                    </p>
-                    <ul className="space-y-2 pl-1">
-                      {card.questions.map((q, qi) => (
-                        <li
-                          key={qi}
-                          className="text-sm leading-relaxed flex gap-2"
-                          style={{ color: 'var(--text-muted)' }}
-                        >
-                          <span className="flex-shrink-0" style={{ color: 'var(--bcg-green)' }}>—</span>
-                          <span>{q}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

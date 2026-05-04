@@ -19,9 +19,9 @@ const passIcon: Record<string, string> = {
 }
 
 const verdictColor: Record<string, string> = {
-  Automate: 'var(--bcg-green)',
-  Augment: 'var(--accent-warm)',
-  'Leave alone': 'var(--accent-warning)',
+  Perimeter: 'var(--bcg-green)',
+  Adjacent: 'var(--accent-warm)',
+  Core: 'var(--accent-protect)',
 }
 
 interface TaskFlowProps {
@@ -133,7 +133,7 @@ function TaskFlow({ task }: TaskFlowProps) {
             className="text-xs uppercase tracking-widest mb-2 block"
             style={{ color: 'var(--text-muted)' }}
           >
-            Verdict
+            Category
           </span>
           <p
             className="text-lg font-bold mb-2 leading-snug"
