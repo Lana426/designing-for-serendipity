@@ -11,6 +11,7 @@ interface FlipCardProps {
 }
 
 const CARD_HEIGHT = 340
+const IMAGE_HEIGHT = 204  // 60% of card height, explicit px — avoids flex % resolution bugs
 
 export default function FlipCard({ card, index }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false)
@@ -34,7 +35,6 @@ export default function FlipCard({ card, index }: FlipCardProps) {
       viewport={{ once: true, margin: '-60px' }}
       transition={{ delay: index * 0.12, duration: 0.6, ease: 'easeOut' }}
     >
-      {/* Hover lift + perspective + accessible button */}
       <div
         role="button"
         tabIndex={0}
@@ -52,21 +52,13 @@ export default function FlipCard({ card, index }: FlipCardProps) {
           cursor: 'pointer',
           transition: 'transform 0.25s ease',
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-4px)'
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)'
-        }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)' }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)' }}
       >
-        {/* Screen-reader live region */}
         <span className="sr-only" aria-live="polite">
-          {flipped
-            ? `Examples: ${card.examples.join('. ')}`
-            : `${card.title}. ${card.descriptor}`}
+          {flipped ? `Examples: ${card.examples.join('. ')}` : `${card.title}. ${card.descriptor}`}
         </span>
 
-        {/* Flip container */}
         <motion.div
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.55, ease: 'easeInOut' }}
@@ -77,27 +69,32 @@ export default function FlipCard({ card, index }: FlipCardProps) {
             transformStyle: 'preserve-3d',
           }}
         >
-          {/* ── FRONT ────────────────────────────────────────────────────── */}
+          {/* ── FRONT ──────────────────────────────────────────────────────── */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
               backfaceVisibility: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
               borderRadius: '16px',
               overflow: 'hidden',
               border: '1px solid var(--divider)',
             }}
           >
-            {/* Image area — 60% */}
-            <div style={{ position: 'relative', height: '60%', flexShrink: 0 }}>
+            {/* Image — explicit px height so Next.js Image fill has a concrete box */}
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+                height: `${IMAGE_HEIGHT}px`,
+                overflow: 'hidden',
+              }}
+            >
               {imgError ? (
                 <div
                   style={{
                     width: '100%',
                     height: '100%',
-                    background: 'var(--bg-elevated)',
+                    background: 'var(--bg)',
                     border: '1px solid rgba(0,168,98,0.15)',
                     display: 'flex',
                     alignItems: 'center',
@@ -126,24 +123,24 @@ export default function FlipCard({ card, index }: FlipCardProps) {
                     className="object-cover"
                     loading="lazy"
                     onError={() => setImgError(true)}
-                    sizes="(max-width: 768px) 100vw, 340px"
+                    sizes="(max-width: 768px) 100vw, 360px"
                   />
                   <div
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      background:
-                        'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%)',
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%)',
+                      zIndex: 1,
                     }}
                   />
                 </>
               )}
             </div>
 
-            {/* Text area — 40% */}
+            {/* Text — takes remaining height */}
             <div
               style={{
-                height: '40%',
+                height: `${CARD_HEIGHT - IMAGE_HEIGHT}px`,
                 background: 'var(--bg-elevated)',
                 padding: '14px 18px 12px',
                 display: 'flex',
@@ -186,20 +183,13 @@ export default function FlipCard({ card, index }: FlipCardProps) {
               >
                 {card.descriptor}
               </p>
-              <p
-                style={{
-                  color: 'var(--text-muted)',
-                  fontSize: '10px',
-                  margin: 0,
-                  marginTop: '2px',
-                }}
-              >
+              <p style={{ color: 'var(--text-muted)', fontSize: '10px', margin: 0, marginTop: '2px' }}>
                 Tap to see examples ↻
               </p>
             </div>
           </div>
 
-          {/* ── BACK ─────────────────────────────────────────────────────── */}
+          {/* ── BACK ───────────────────────────────────────────────────────── */}
           <div
             style={{
               position: 'absolute',
@@ -216,17 +206,9 @@ export default function FlipCard({ card, index }: FlipCardProps) {
               overflowY: 'auto',
             }}
           >
-            <p
-              style={{
-                color: 'var(--text-muted)',
-                fontSize: '12px',
-                fontWeight: 500,
-                margin: 0,
-              }}
-            >
+            <p style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 500, margin: 0 }}>
               {card.title}
             </p>
-
             <p
               style={{
                 color: 'var(--bcg-green)',
@@ -238,54 +220,17 @@ export default function FlipCard({ card, index }: FlipCardProps) {
             >
               Examples
             </p>
-
-            <ul
-              style={{
-                listStyle: 'none',
-                padding: 0,
-                margin: 0,
-                flex: 1,
-              }}
-            >
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
               {card.examples.map((ex, i) => (
-                <li
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    gap: '8px',
-                    marginBottom: '10px',
-                  }}
-                >
-                  <span
-                    style={{
-                      color: 'var(--bcg-green)',
-                      flexShrink: 0,
-                      fontWeight: 600,
-                    }}
-                  >
-                    —
-                  </span>
-                  <span
-                    style={{
-                      color: 'var(--text-secondary)',
-                      fontSize: '13px',
-                      lineHeight: 1.5,
-                    }}
-                  >
+                <li key={i} style={{ display: 'flex', gap: '8px', marginBottom: '10px' }}>
+                  <span style={{ color: 'var(--bcg-green)', flexShrink: 0, fontWeight: 600 }}>—</span>
+                  <span style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.5 }}>
                     {ex}
                   </span>
                 </li>
               ))}
             </ul>
-
-            <p
-              style={{
-                color: 'var(--text-muted)',
-                fontSize: '10px',
-                textAlign: 'center',
-                margin: 0,
-              }}
-            >
+            <p style={{ color: 'var(--text-muted)', fontSize: '10px', textAlign: 'center', margin: 0 }}>
               Tap to flip back
             </p>
           </div>
